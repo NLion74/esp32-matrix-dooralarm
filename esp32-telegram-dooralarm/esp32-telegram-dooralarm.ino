@@ -1,23 +1,18 @@
 
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
-#include <UniversalTelegramBot.h>
 #include <ArduinoJson.h>
 #include <WiFiManager.h>
+#include <HTTPClient.h>
 
 
 const int reedSwitch = 5; //set reedswitch pin
 
+const char* room_id "room_id";
+const char* server "http://127.0.0.1:5505";
 
 
-
-#define BOTtoken "bottoken"  // add bot token (get from botfather)
-
-#define CHAT_ID "chatid" //chat id of the person or group chat that is receiving the message (get from myidbot)
-
-//initialize the telgram bot
 WiFiClientSecure client;
-UniversalTelegramBot bot(BOTtoken, client);
 
 void setup() {
 
@@ -25,19 +20,13 @@ void setup() {
   
 WiFiManager wm;
 
-
+ 
 pinMode(reedSwitch, INPUT_PULLUP); //set pinmode
 
-
-  client.setCACert(TELEGRAM_CERTIFICATE_ROOT); // add certificate for api.telegram.org
  bool res;
 
-
 res = wm.autoConnect("AutoConnectAP","password"); // password protected ap, you can replace the password and ssid
-
-  bot.sendMessage(CHAT_ID, "Bot started up", ""); //send a startup message
-
-
+  //send startup message
 
 }
 
@@ -51,15 +40,14 @@ void loop() {  //sets the value of  the reedSwitch pin at the start as base, and
     {
       
       Serial.println("door open");
-      bot.sendMessage(CHAT_ID, "The door is open");
-
+      //send message via http
 
     }
     else
     {
       
       Serial.println("door closed");
-      bot.sendMessage(CHAT_ID, "The door is closed");
+      //send message via http
       
     }
     lastval = val;
