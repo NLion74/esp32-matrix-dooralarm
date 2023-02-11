@@ -27,8 +27,9 @@ pinMode(reedSwitch, INPUT_PULLUP); set pinmode
 
  bool res;
 
-res = wm.autoConnect(AutoConnectAP,password);  password protected app, you can replace the password and ssid
-  send startup message
+res = wm.autoConnect(AutoConnectAP,password);  
+ //password protected app, you can replace the password and ssid send startup message
+  
   http.begin();
   http.addHeader(Content-Type, textplain);
   http.addHeader(Channel, room_id);
@@ -41,7 +42,8 @@ res = wm.autoConnect(AutoConnectAP,password);  password protected app, you can r
 
 }
 
-void loop() {  sets the value of  the reedSwitch pin at the start as base, and  then checks if anything changed, then acts acordingly
+void loop() {  
+  //sets the value of  the reedSwitch pin at the start as base, and  then checks if anything changed, then acts acordingly
   static int lastval = !digitalRead(reedSwitch);
   int val = digitalRead(reedSwitch);
 
@@ -51,7 +53,7 @@ void loop() {  sets the value of  the reedSwitch pin at the start as base, and  
     {
       
       Serial.println(door open);
-      send message via http to matrix-notifier
+      //send message via http to matrix-notifier
       http.begin();
       http.addHeader(Content-Type, textplain);
       http.addHeader(Channel, room_id);
@@ -67,7 +69,7 @@ void loop() {  sets the value of  the reedSwitch pin at the start as base, and  
     {
       
       Serial.println(door closed);
-      send message via http to matrix-notifier
+      //end message via http to matrix-notifier
       http.begin();
       http.addHeader(Content-Type, textplain);
       http.addHeader(Channel, room_id);
