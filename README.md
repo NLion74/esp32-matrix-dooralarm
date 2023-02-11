@@ -1,10 +1,7 @@
 # Overview
 
-This project utilizes and esp32 and to send an message over telegram if a door or window opens/closes.
+This project utilizes and esp32 and to send an message over matrix if a door or window opens/closes.
 It works with detecting if a connected reed-switch is closed or not,and then sends a message acordingly.
-
-
-
 
 ## Pinout:
 
@@ -22,14 +19,12 @@ It works with detecting if a connected reed-switch is closed or not,and then sen
 ## Steps
 
 ```
-1. Create a bot using botfather over telegram.(and copy/paste the token)
-2. Get your chatid via the myid bot.(and copy/paste it)
-3. Search for your bot,and klick start, else the bot wont be able to send you messages!
-4. Add the token, and  chatid to the code.
-5. Wire everything according to the "Pinout" section.
-6. Flash the code.
-7. Connect to the AP and enter your wifi credentials.
-8. It Works!
+1. Host and configure a Matrix-Notifier instance
+2. Set all values needed in the esp32-matrix-dooralarm/esp32-telegram-dooralarm.ino
+3. Wire everything according to the "Pinout" section.
+4. Flash the code.
+5. Connect to the AP and enter your wifi credentials.
+6. It Works!
 
 9. if it doesnt, check the serial monitor and the code to see whats wrong / where its getting stuck.
 
