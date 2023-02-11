@@ -3,6 +3,10 @@
 This project utilizes and esp32 and to send an message over matrix if a door or window opens/closes.
 It works with detecting if a connected reed-switch is closed or not,and then sends a message acordingly.
 
+## Credit
+
+This project was originally created and designed by [Sigeband][https://github.com/Sigeband]. This is just a fork to make it work with matrix.
+
 ## Pinout:
 
 ![image](https://user-images.githubusercontent.com/114338337/215847824-6a8d162c-2f7a-4fb1-961a-24563dd50137.png)
@@ -26,9 +30,9 @@ It works with detecting if a connected reed-switch is closed or not,and then sen
 5. Connect to the AP and enter your wifi credentials.
 6. It Works!
 
-9. if it doesnt, check the serial monitor and the code to see whats wrong / where its getting stuck.
+7. if it doesnt, check the serial monitor and the code to see whats wrong / where its getting stuck.
 
-10. Still doesnt work? reach out to me, *maybe* i can help.
+8. Still doesnt work? reach out to me, or ideally Sigeband who has more experience with the esp32 than me.
 ```
 
 ## 3D-Printing / Recommended Settings 
