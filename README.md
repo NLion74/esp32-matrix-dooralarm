@@ -5,7 +5,7 @@ It works with detecting if a connected reed-switch is closed or not,and then sen
 
 ## Credit
 
-This project was originally created and designed by [Sigeband][https://github.com/Sigeband]. This is just a fork to make it work with matrix.
+This project was originally created and designed by [Sigeband](https://github.com/Sigeband). This is just a fork to make it work with matrix.
 
 ## Pinout:
 
