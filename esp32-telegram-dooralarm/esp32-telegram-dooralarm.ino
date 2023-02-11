@@ -10,7 +10,10 @@ const int reedSwitch = 5; //set reedswitch pin
 
 const char* room_id "room_id";
 const char* server "http://127.0.0.1:5505";
+# If authentication is enabled
+const char* auth_secret "";
 
+HTTPClient http;
 
 WiFiClientSecure client;
 
@@ -25,8 +28,17 @@ pinMode(reedSwitch, INPUT_PULLUP); //set pinmode
 
  bool res;
 
-res = wm.autoConnect("AutoConnectAP","password"); // password protected ap, you can replace the password and ssid
+res = wm.autoConnect("AutoConnectAP","password"); // password protected app, you can replace the password and ssid
   //send startup message
+  http.begin("");
+  http.addHeader("Content-Type", "text/plain");
+  http.addHeader("Channel", room_id);
+  http.addHeader("Authorization", auth_secret);
+  int httpResponseCode = http.POST("Started up");
+  if (httpResponseCode == 401) {
+  Serial.print("Invalid auth_secret");
+  }
+  http.end();
 
 }
 
@@ -40,14 +52,32 @@ void loop() {  //sets the value of  the reedSwitch pin at the start as base, and
     {
       
       Serial.println("door open");
-      //send message via http
+      //send message via http to matrix-notifier
+      http.begin("");
+      http.addHeader("Content-Type", "text/plain");
+      http.addHeader("Channel", room_id);
+      http.addHeader("Authorization", auth_secret);
+      int httpResponseCode = http.POST("The door is open");
+      if (httpResponseCode == 401) {
+      Serial.print("Invalid auth_secret");
+      }
+      http.end();
 
     }
     else
     {
       
       Serial.println("door closed");
-      //send message via http
+      //send message via http to matrix-notifier
+      http.begin("");
+      http.addHeader("Content-Type", "text/plain");
+      http.addHeader("Channel", room_id);
+      http.addHeader("Authorization", auth_secret);
+      int httpResponseCode = http.POST("The door is closed");
+      if (httpResponseCode == 401) {
+      Serial.print("Invalid auth_secret");
+      }
+      http.end();
       
     }
     lastval = val;
