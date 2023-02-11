@@ -8,9 +8,9 @@
 const int reedSwitch = 5; set reedswitch pin
 
 const char room_id room_id;
-const char server http127.0.0.15505;
+const char server "127.0.0.15505";
 # If authentication is enabled
-const char auth_secret ;
+const char auth_secret "";
 
 HTTPClient http;
 
